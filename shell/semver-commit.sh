@@ -7,8 +7,9 @@ if [ -z "${SEMVER_BRANCH}" ] || [ -z "${SEMVER_TARGET}" ] || [ -z "${SEMVER_VERS
 fi
 
 if [ -e .semver/${SEMVER_TARGET} ]; then
-    ${DIR}/semver-next-pre.sh "$@" > .semver/${SEMVER_TARGET}
-    ${DIR}/semver-commit.sh
+    cd .semver
+    git add ${SEMVER_TARGET}
+    git commit --message "semver(${SEMVER_TARGET}): $(cat ${SEMVER_TARGET})"
 else
     exit 1
 fi

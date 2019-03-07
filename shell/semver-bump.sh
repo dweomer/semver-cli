@@ -8,9 +8,7 @@ fi
 
 if [ -e .semver/${SEMVER_TARGET} ]; then
     ${DIR}/semver-next.sh "$@" > .semver/${SEMVER_TARGET}
-    # cd .semver
-    # git add ${SEMVER_TARGET}
-    # git commit --message "semver(${SEMVER_TARGET}): $(cat ${SEMVER_TARGET})"
+    ${DIR}/semver-commit.sh
 else
     exit 1
 fi
